@@ -207,7 +207,7 @@ This sharing rule grants Read access to the YachtReservation guest user for all 
 2. On the homepage, you'll see the yacht search form
 3. Select a yacht type from the dropdown menu : Default all types (for example select Sport yacht)
 4. Enter the party size (number of guests) : (for example 20)
-5. Select a reservation date (must be in the future) 
+5. Select a reservation date (must be in the future) (for example 3rd march 2026)
 6. Click the "Search" button to view available yachts
 7. Browse the results and select a yacht to view details
 8. Click "Reserve Now" to book the yacht
