@@ -1,27 +1,41 @@
 /**
-* @description Service to query Yacht Availability via Named Credential callout and handle responses/errors.
-* Follows .a4drules:
-* - with sharing
-* - Invocable for Flow
-* - Enums over string constants
-* - Database methods with USER_MODE
-* - Return early pattern
-* - ApexDocs
-*/
+ * @description Service to query Yacht Availability via Named Credential callout and handle responses/errors.
+ * Follows .a4drules:
+ * - with sharing
+ * - Invocable for Flow
+ * - Enums over string constants
+ * - Database methods with USER_MODE
+ * - Return early pattern
+ * - ApexDocs
+ */
 public with sharing class YachtAvailabilityService {
     
 
-private static YachtReservation__mdt availabilityAPI =  YachtReservation__mdt.getInstance('Availability');
+    /**
+     * @description Reference to the YachtReservation__mdt custom metadata record for availability API configuration
+     */
+    private static YachtReservation__mdt availabilityAPI =  YachtReservation__mdt.getInstance('Availability');
 
     /**
-* LWC imperative entry point.
-* Note: cacheable=false because this performs a callout and depends on parameters.
-*/
+     * @description LWC imperative entry point for getting yacht availability.
+     * Note: cacheable=false because this performs a callout and depends on parameters.
+     * @param reservationDate The date for which to check yacht availability
+     * @param yachtType The type of yacht to filter by (optional)
+     * @param minimumCapacity The minimum capacity required for the yacht
+     * @return List of AvailableYachtsInfo objects representing available yachts
+     */
     @AuraEnabled(cacheable=false)
     public static List<AvailableYachtsInfo> getAvailability(Date reservationDate, String yachtType, Integer minimumCapacity) {
        return queryAvailability(reservationDate, yachtType, minimumCapacity);
     }
     
+    /**
+     * @description Queries yacht availability from the external API and processes results
+     * @param dateOfAvailability The date for which to check availability
+     * @param yachtType The type of yacht to filter by (optional)
+     * @param minCapacity The minimum capacity required for the yacht
+     * @return List of AvailableYachtsInfo objects representing available yachts
+     */
     public static List<AvailableYachtsInfo> queryAvailability(Date dateOfAvailability, String yachtType, Integer minCapacity) {
         
         // Construct SOQL string per user-provided pattern, with safe escaping where applicable
@@ -113,6 +127,10 @@ private static YachtReservation__mdt availabilityAPI =  YachtReservation__mdt.ge
         return listofavailableYachtsInfo;
     }
 
+    /**
+     * @description Retrieves all yacht types from the Yacht_Type__c object
+     * @return List of Yacht_Type__c records
+     */
     @AuraEnabled(cacheable=true)
     public static List<Yacht_Type__c> getyachtTypes(){
         try {
@@ -133,6 +151,11 @@ private static YachtReservation__mdt availabilityAPI =  YachtReservation__mdt.ge
         }
     }
 
+    /**
+     * @description Creates a new yacht reservation
+     * @param reservationInformation JSON string containing reservation details
+     * @return Confirmation message upon successful reservation
+     */
     @AuraEnabled
     public static string createReservation(String reservationInformation){
 

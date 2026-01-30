@@ -1,13 +1,16 @@
 /**
-* Unit tests for YachtAvailabilityService.
-* - Uses HttpCalloutMock
-* - Covers success, error, and parse error paths
-* - No SeeAllData
-* - Uses Test.startTest/stopTest
-*/
+ * @description Unit tests for YachtAvailabilityService.
+ * - Uses HttpCalloutMock
+ * - Covers success, error, and parse error paths
+ * - No SeeAllData
+ * - Uses Test.startTest/stopTest
+ */
 @IsTest
 private class YachtAvailabilityService_Test {
     
+    /**
+     * @description Setup method to create test data for yacht types and individual yachts
+     */
     @testSetup 
     static void yachtDatasetup() {
         
@@ -44,6 +47,9 @@ private class YachtAvailabilityService_Test {
     }
     
 
+    /**
+     * @description Test method for getyachtTypes method
+     */
     @IsTest
     static void testgetyachtTypes(){
 
@@ -58,6 +64,9 @@ private class YachtAvailabilityService_Test {
     }
 
 
+    /**
+     * @description Test method for successful getAvailability call
+     */
     @IsTest
     static void test_getAvailability_success() {
 
@@ -73,6 +82,9 @@ private class YachtAvailabilityService_Test {
          System.assertEquals(true, result[0].isAvailable);
     }
     
+    /**
+     * @description Test method for successful reservation creation
+     */
     @IsTest
     static void testcreateReservation() {
 
@@ -95,7 +107,10 @@ private class YachtAvailabilityService_Test {
         Test.stopTest();
 
     }
-     @IsTest
+    /**
+     * @description Test method for reservation creation with callout error
+     */
+    @IsTest
     static void testcreateReservationException() {
 
         List<Individual_Yacht__c> Yachtinfo = [select id,name from Individual_Yacht__c where name = 'Luxury Day Yacht' ];
@@ -117,7 +132,10 @@ private class YachtAvailabilityService_Test {
         Test.stopTest();
 
     }
-      @IsTest
+    /**
+     * @description Test method for reservation creation with Aura exception
+     */
+    @IsTest
     static void testcreateReservationAuraException() {
 
         List<Individual_Yacht__c> Yachtinfo = [select id,name from Individual_Yacht__c where name = 'Luxury Day Yacht' ];
@@ -139,7 +157,10 @@ private class YachtAvailabilityService_Test {
         Test.stopTest();
 
     }
-     @IsTest
+    /**
+     * @description Test method for reservation creation with server error
+     */
+    @IsTest
     static void testcreateReservationServerError() {
 
         List<Individual_Yacht__c> Yachtinfo = [select id,name from Individual_Yacht__c where name = 'Luxury Day Yacht' ];
@@ -161,6 +182,9 @@ private class YachtAvailabilityService_Test {
         Test.stopTest();
 
     }
+    /**
+     * @description Test method for getAvailability exception handling with callout error
+     */
     @IsTest
     static void test_getAvailability_exception_handling() {
         // Test that exceptions in getAvailability are properly handled
@@ -176,7 +200,10 @@ private class YachtAvailabilityService_Test {
         
     }
 
-     @IsTest
+    /**
+     * @description Test method for getAvailability exception handling with general exception
+     */
+    @IsTest
     static void test_getAvailability_exception_handling1() {
         // Test that exceptions in getAvailability are properly handled
         Date d = Date.newInstance(2026, 3, 22);
@@ -191,7 +218,10 @@ private class YachtAvailabilityService_Test {
         
     }
 
-     @IsTest
+    /**
+     * @description Test method for getAvailability server error handling
+     */
+    @IsTest
     static void test_getAvailability_server_error_handling() {
         // Test that exceptions in getAvailability are properly handled
         Date d = Date.newInstance(2026, 3, 22);
@@ -206,6 +236,9 @@ private class YachtAvailabilityService_Test {
         
     }
 
+    /**
+     * @description Mock class for simulating HTTP callout exceptions
+     */
     private class CalloutErrorMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -213,7 +246,10 @@ private class YachtAvailabilityService_Test {
             
         }
     }
-     private class ServerErrorMock implements HttpCalloutMock {
+    /**
+     * @description Mock class for simulating HTTP server errors
+     */
+    private class ServerErrorMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
             res.setStatusCode(500);
@@ -221,6 +257,9 @@ private class YachtAvailabilityService_Test {
             return res;            
         }
     }
+    /**
+     * @description Mock class for simulating Aura exceptions
+     */
     private class ExceptionErrorMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();

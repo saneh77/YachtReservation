@@ -1,5 +1,12 @@
+/**
+ * @description Helper class containing utility methods for yacht reservation processes
+ */
 public without sharing class YachtReservationHelperClass {
     
+    /**
+     * @description Enqueues a job to create a reservation in an external system
+     * @param reservationId The ID of the Yacht_Reservation__c record
+     */
     public static void createReservationInExternalSystem(Id reservationId){
 
         try{
@@ -25,6 +32,15 @@ public without sharing class YachtReservationHelperClass {
         }
     }
 
+    /**
+     * @description Creates integration logs for failed API calls
+     * @param IntegrationType The type of integration (e.g., 'Reservation', 'Availability')
+     * @param reservationId The ID of the Yacht_Reservation__c record (if applicable)
+     * @param requestPayload The request payload sent to the external system
+     * @param responsePayload The response payload received from the external system
+     * @param errorCode The error code if applicable
+     * @param errorMessage The error message if applicable
+     */
     public static void createIntegrationlogs(
         String IntegrationType,
         Id reservationId,

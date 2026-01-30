@@ -1,4 +1,4 @@
-/** 
+/**
  * @description Queueable class to create Yacht_Reservation__c via REST callout.
  * Uses Named Credential 'YachtReservation' and logs results to Integration_Logs__c.
  * Follows: with sharing, enums for constants, Database methods, early return, bulk-safe patterns.
@@ -6,16 +6,24 @@
 public without sharing class YachtReservationQueueable implements Queueable, Database.AllowsCallouts {
 
 
+    /**
+     * @description Reference to the YachtReservation__mdt custom metadata record for reservation API configuration
+     */
     private static YachtReservation__mdt reservationAPI =  YachtReservation__mdt.getInstance('Reservation');
     
 
+    /**
+     * @description Wrapper class for deserializing reservation API responses
+     */
     public class ReservationAPIResponseWrapper {
         public String id;
         public Boolean success;
         public List<String> errors;
     }      
 
-    // Request payload DTO
+    /**
+     * @description Request payload DTO for reservation API calls
+     */
     public class ReservationRequestDTO {
         public String guest_Email_temp;
         public String guest_Name_temp;
@@ -25,7 +33,9 @@ public without sharing class YachtReservationQueueable implements Queueable, Dat
         public String status_temp;
     }
 
-    // Constructor parameters
+    /**
+     * @description Constructor parameters
+     */
     private final String guestEmail;
     private final String guestName;
     private final String externalYachtId;
@@ -37,6 +47,13 @@ public without sharing class YachtReservationQueueable implements Queueable, Dat
    
     /**
      * @description Full constructor with optional local record linkage for logging
+     * @param reservationId The ID of the Yacht_Reservation__c record
+     * @param guestEmail The email of the guest
+     * @param guestName The name of the guest
+     * @param externalYachtId The external ID of the yacht
+     * @param partySize The size of the party
+     * @param reservationDate The date of the reservation
+     * @param status The status of the reservation
      */
     public YachtReservationQueueable(
         String reservationId,
@@ -56,6 +73,10 @@ public without sharing class YachtReservationQueueable implements Queueable, Dat
         this.status = status;
     }
 
+    /**
+     * @description Executes the queueable job to create a reservation in the external system
+     * @param context The QueueableContext
+     */
     public void execute(QueueableContext context) {
 
         
