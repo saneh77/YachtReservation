@@ -224,7 +224,7 @@ export default class YachtSearchResults extends LightningElement {
                 this.isLoading = false;
             })
             .catch(error => {
-                noyachtFound = false;
+                this.noyachtFound = false;
                 this.isLoading = false;
                 console.log(error);
             })

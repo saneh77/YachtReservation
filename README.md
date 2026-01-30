@@ -203,11 +203,11 @@ This sharing rule grants Read access to the YachtReservation guest user for all 
 
 ## Demo Steps
 
-1. Access the Experience Site using the assigned URL
+1. Access the Experience Site using the assigned URL : https://orgfarm-5db03b9578-dev-ed.develop.my.site.com/
 2. On the homepage, you'll see the yacht search form
-3. Select a yacht type from the dropdown menu
-4. Enter the party size (number of guests)
-5. Select a reservation date (must be in the future)
+3. Select a yacht type from the dropdown menu : Default all types (for example select Sport yacht)
+4. Enter the party size (number of guests) : (for example 20)
+5. Select a reservation date (must be in the future) 
 6. Click the "Search" button to view available yachts
 7. Browse the results and select a yacht to view details
 8. Click "Reserve Now" to book the yacht
