@@ -1,0 +1,157 @@
+<template>
+    <template if:false={yachtInfo}>
+        <lightning-card>
+            <!-- lightning card for the label when wiredRecord has no data goes here  -->
+            <span class="slds-align_absolute-center">{label.SELECT_YACHT_PROMPT}</span>
+        </lightning-card>
+    </template>
+
+    <template if:true={yachtInfo}>
+        <!-- lightning card for the content when wiredRecord has data goes here  -->
+
+        <div style={backgroundStyle} class="tile"></div>
+
+        <lightning-card title={yachtName} icon-name={detailsTabIconName}>
+
+            <lightning-button label="Reserve now" onclick={handleReservation} slot="actions" variant="brand"
+                disabled={isYachtAvailable}></lightning-button>
+
+            <lightning-layout multiple-rows>
+
+                <lightning-layout-item size="12" padding="around-small">
+                    <div class="slds-text-title slds-m-bottom_xx-small">
+                        Yacht Type:
+                    </div>
+                    <div class="slds-text-body_regular">
+                        {yachtType}
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" padding="around-small">
+                    <div class="slds-text-title slds-m-bottom_xx-small">
+                        Capacity:
+                    </div>
+                    <div class="slds-text-body_regular">
+                        {yachtCapacity}
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item if:false={isYachtAvailable} size="12" padding="around-small">
+                    <div class="slds-text-title slds-m-bottom_xx-small">
+                        Price:
+                    </div>
+                    <div class="slds-text-body_regular">
+                        <lightning-formatted-number value={yachtPrice} maximum-fraction-digits="2"
+                            format-style="currency"></lightning-formatted-number>
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" padding="around-small">
+                    <div class="slds-text-title slds-m-bottom_xx-small">
+                        Length:
+                    </div>
+                    <div class="slds-text-body_regular">
+                        {yachtLength} feet
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" padding="around-small">
+                    <div class="slds-text-title slds-m-bottom_xx-small">
+                        Description:
+                    </div>
+                    <div class="slds-text-body_regular">
+                        {yachtDescription}
+                    </div>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" padding="around-small">
+                    <div class="slds-text-title slds-m-bottom_xx-small">
+                        Available:
+                    </div>
+                    <div class="slds-text-body_regular">
+                        {yachtAvailability}
+                    </div>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </lightning-card>
+    </template>
+
+    <template if:true={reserveModalOpen}>
+        <section class="slds-modal slds-fade-in-open" role="dialog" aria-modal="true">
+            <div class="slds-modal__container">
+
+                <!-- Modal Header -->
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">{label.ENTER_DETAILS}</h2>
+                </header>
+
+                <!-- Modal Body -->
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-layout multiple-rows>
+
+                        <!-- Full Name -->
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input required label="Full Name" value={guestfullName}
+                                onchange={handleFullNameChange}>
+                            </lightning-input>
+                        </lightning-layout-item>
+
+                        <!-- Email -->
+                        <lightning-layout-item size="12" padding="around-small">
+                            <lightning-input required type="email" label="Email" value={email}
+                                onchange={handleEmailChange}>
+                            </lightning-input>
+                        </lightning-layout-item>
+
+                    </lightning-layout>
+                </div>
+
+                <!-- Modal Footer -->
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" label="Cancel" onclick={handleClose}></lightning-button>
+                    <lightning-button class="slds-m-left_small" variant="brand" label="Submit" onclick={handleSubmit}
+                        disabled={IsguestInfoadded}></lightning-button>
+                    <template if:true={isSubmitting}>
+                        <lightning-spinner alternative-text="Submitting..."
+                            size="medium"></lightning-spinner>
+                    </template>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Backdrop -->
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={showToast}>
+        <section class="slds-modal slds-fade-in-open" role="dialog" aria-modal="true">
+            <div class="slds-modal__container">
+
+                <!-- Modal Header -->
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">{reservationHeader}</h2>
+                </header>
+
+                <!-- Modal Body -->
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-layout>
+
+
+                        <lightning-layout-item size="12" padding="around-small">
+                            <p>{reservationMessage}</p>
+                        </lightning-layout-item>
+
+                    </lightning-layout>
+                </div>
+
+                <!-- Modal Footer -->
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="neutral" label="Close" onclick={handleClose1}></lightning-button>
+                </footer>
+            </div>
+        </section>
+
+        <!-- Backdrop -->
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

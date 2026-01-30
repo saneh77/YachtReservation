@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Reservation_Confirmation_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reservation confirmation message shown after reservation submission</shortDescription>
+        <value>We’re confirming your reservation. You’ll receive an email once it’s confirmed.</value>
+    </labels>
+    <labels>
+        <fullName>No_Yachts_Available_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No yachts available message for LWC results</shortDescription>
+        <value>No Yacht Available on the selected Date.</value>
+    </labels>
+    <labels>
+        <fullName>Select_Yacht_Prompt</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LWC detail view prompt when no yacht selected</shortDescription>
+        <value>Select a yacht to check its details</value>
+    </labels>
+    <labels>
+        <fullName>Enter_Your_Details_Header</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Modal header prompting for guest details</shortDescription>
+        <value>Enter Your Details</value>
+    </labels>
+    <labels>
+        <fullName>Reservation_Submitted_Success</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Success header when reservation submitted</shortDescription>
+        <value>Reservation submitted successfully</value>
+    </labels>
+    <labels>
+        <fullName>Reservation_Not_Available_Header</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Warning header when reservation not available</shortDescription>
+        <value>Reservation Not Available</value>
+    </labels>
+    <labels>
+        <fullName>Reservation_Not_Available_Body</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Body text when selected yacht/date unavailable</shortDescription>
+        <value>This yacht is already booked on the requested Date. Please choose a different date, or yacht.</value>
+    </labels>
+</CustomLabels>

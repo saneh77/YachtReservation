@@ -1,0 +1,78 @@
+{
+  "type" : "sfdc_cms__view",
+  "title" : "Home",
+  "contentBody" : {
+    "component" : {
+      "children" : [ {
+        "children" : [ {
+          "attributes" : {
+            "backgroundImageConfig" : "",
+            "backgroundImageOverlay" : "rgba(0,0,0,0)",
+            "componentSpacerSize" : "",
+            "layoutDirectionDesktop" : "row",
+            "layoutDirectionMobile" : "column",
+            "layoutDirectionTablet" : "column",
+            "maxContentWidth" : "",
+            "sectionColumnGutterWidth" : "",
+            "sectionConfig" : "{\"UUID\":\"27e18c15-329e-4390-9ba4-4a3870e1d81a\",\"columns\":[{\"UUID\":\"44213483-5ffd-4053-8d2c-17ae512a752d\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"9\",\"seedComponents\":null},{\"UUID\":\"ef4c554c-05c3-4aaf-8b21-73c10ca0e56f\",\"columnName\":\"Column 2\",\"columnKey\":\"ffe15\",\"columnWidth\":\"3\",\"seedComponents\":[]}]}",
+            "sectionMinHeight" : "",
+            "sectionVerticalAlign" : "flex-start"
+          },
+          "children" : [ {
+            "children" : [ {
+              "attributes" : { },
+              "definition" : "c:yachtSearch",
+              "id" : "c151eefe-095a-41a6-8c48-22b4635c66a6",
+              "type" : "component"
+            } ],
+            "id" : "44213483-5ffd-4053-8d2c-17ae512a752d",
+            "name" : "col1",
+            "title" : "Column 1",
+            "type" : "region"
+          }, {
+            "children" : [ {
+              "attributes" : { },
+              "definition" : "c:yachtDetailView",
+              "id" : "dde13148-1970-4bd0-9216-e09bc16476c2",
+              "type" : "component"
+            } ],
+            "id" : "ef4c554c-05c3-4aaf-8b21-73c10ca0e56f",
+            "name" : "ffe15",
+            "title" : "Column 2",
+            "type" : "region"
+          } ],
+          "definition" : "community_layout:section",
+          "id" : "27e18c15-329e-4390-9ba4-4a3870e1d81a",
+          "type" : "component"
+        } ],
+        "id" : "548767bb-8504-44a5-9972-fe598ef6ca2f",
+        "name" : "content",
+        "title" : "Content",
+        "type" : "region"
+      }, {
+        "children" : [ {
+          "attributes" : {
+            "customHeadTags" : "",
+            "description" : "",
+            "pageTitle" : "Home",
+            "recordId" : "{!recordId}"
+          },
+          "definition" : "community_builder:seoAssistant",
+          "id" : "353a2a28-20b0-4317-b23b-09681088ee3d",
+          "type" : "component"
+        } ],
+        "id" : "aada0ea9-a4b3-4ae0-82ca-1d50b3d7db10",
+        "name" : "sfdcHiddenRegion",
+        "title" : "sfdcHiddenRegion",
+        "type" : "region"
+      } ],
+      "definition" : "community_layout:sldsFlexibleLayout",
+      "id" : "50f3faf4-54e3-4caf-8312-f01ab7890889",
+      "type" : "component"
+    },
+    "dataProviders" : [ ],
+    "themeLayoutType" : "Inner",
+    "viewType" : "home"
+  },
+  "urlName" : "home"
+}

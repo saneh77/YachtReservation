@@ -1,0 +1,23 @@
+<template>
+    <div onclick={selectYacht} class={tileClass} >
+        <div style={backgroundStyle} class="tile"></div>
+        <div class="lower-third">
+            <h1 class="slds-truncate slds-text-heading_medium">{yacht.yachtName}</h1>
+
+            <div class="slds-text-body_small">
+                Type: {yacht.yachtType}
+            </div>
+
+            <div if:true={isYachtAvailable} class="slds-text-body_small">
+                Price: <lightning-formatted-number value={yacht.price}
+                    maximum-fraction-digits="2"></lightning-formatted-number>
+            </div>
+
+            <div class="slds-text-body_small">
+                Capacity: {yacht.capacity}
+            </div>
+
+            <!-- Boat information goes here -->
+        </div>
+    </div>
+</template>

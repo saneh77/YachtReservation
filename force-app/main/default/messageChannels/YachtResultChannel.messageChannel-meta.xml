@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is a Lightning Message Channel for the Yacht Reservation App.</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>This is the Yacht Id that which indicates that this yacht is now not available</description>
+        <fieldName>recordId</fieldName>
+    </lightningMessageFields>
+    <masterLabel>YachtResultChannel</masterLabel>
+</LightningMessageChannel>

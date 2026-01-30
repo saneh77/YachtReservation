@@ -1,0 +1,62 @@
+<template>
+
+
+  <lightning-layout multiple-rows>
+
+    <!-- Top -->
+    <lightning-layout-item size="12">
+      <lightning-card title="Find your favourite Yacht">
+        <div class="slds-p-around_medium">
+
+          <lightning-layout multiple-rows horizontal-align="center">
+
+            <!-- Yacht Type -->
+            <lightning-layout-item size="12" medium-device-size="6" large-device-size="3" padding="around-small">
+              <lightning-combobox name="yachtType" label="Yacht Type" placeholder="Select a type" value={yachtType}
+                options={yachtTypeOptions} onchange={handleYachtTypeChange}>
+              </lightning-combobox>
+            </lightning-layout-item>
+
+            <!-- Party Size -->
+            <lightning-layout-item size="12" medium-device-size="6" large-device-size="3" padding="around-small">
+              <lightning-input type="number" name="partySize" label="Party Size" required min="1" value={partySize}
+                onchange={handlePartySizeChange}>
+              </lightning-input>
+            </lightning-layout-item>
+
+            <!-- Reservation Date -->
+            <lightning-layout-item size="12" medium-device-size="6" large-device-size="3" padding="around-small">
+              <lightning-input type="date" name="reservationDate" label="Reservation Date" required
+                value={reservationDate} onchange={handleReservationDateChange}>
+              </lightning-input>
+            </lightning-layout-item>
+
+            <!-- Search Button -->
+            <lightning-layout-item size="12" medium-device-size="6" large-device-size="3" padding="around-small"
+              class="slds-align_absolute-center">
+              <lightning-button label="Search" variant="brand" onclick={handleSearch} disabled={isSearchDisabled}>
+              </lightning-button>
+            </lightning-layout-item>
+
+          </lightning-layout>
+
+        </div>
+      </lightning-card>
+    </lightning-layout-item>
+
+  
+
+  <!-- Bottom -->
+
+
+
+  <lightning-layout-item size="12" class="slds-p-top_small slds-is-relative">
+    <lightning-card>
+      
+      <c-yacht-Search-Results></c-yacht-Search-Results>
+
+    </lightning-card>
+  </lightning-layout-item>
+
+  </lightning-layout>
+</template>

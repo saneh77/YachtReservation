@@ -1,0 +1,25 @@
+<template>
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+    </template>
+    <template if:true={yachts}>
+        <div class="slds-scrollable_y" style={areYachtsavailable} onscroll={handleScroll}>
+            <lightning-layout horizontal-align="center" multiple-rows>
+                <template for:each={visibleYachts} for:item="yacht">
+                    <lightning-layout-item key={yacht.yachtId} padding="around-small" size="12" small-device-size="6"
+                        medium-device-size="4" large-device-size="4">
+                        <c-yacht-tile yacht={yacht} onyachtselect={updateSelectedTile}>
+
+                        </c-yacht-tile>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </div>
+    </template>
+    <template if:true={noyachtFound}>
+         <lightning-card>
+            <!-- lightning card for the label when wiredRecord has no data goes here  -->
+            <span class="slds-align_absolute-center">{label.NO_YACHTS_MSG}</span>
+        </lightning-card>
+    </template>
+</template>

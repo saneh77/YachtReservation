@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Yacht_Type__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Yacht Type</label>
+    <referenceTo>Yacht_Type__c</referenceTo>
+    <relationshipLabel>Individual Yachts</relationshipLabel>
+    <relationshipName>Individual_Yachts</relationshipName>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
