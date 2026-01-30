@@ -180,7 +180,7 @@ public with sharing class YachtAvailabilityService {
 
         } catch (Exception e) {
             // Return a safe, user-facing message without leaking internals
-            YachtReservationHelperClass.createIntegrationlogs('Reservation', '', reservationInformation, '', '', 'Unexpected Exception: ' + e.getMessage());           
+            YachtReservationHelperClass.createIntegrationlogs('Reservation', null, reservationInformation, '', '', 'Unexpected Exception: ' + e.getMessage());           
 
             throw new AuraHandledException('Reservation failed. Error details :: ' + e.getMessage());
 
